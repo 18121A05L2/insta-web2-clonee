@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+    .posticons {
+        @apply text-[2rem] cursor-pointer hover:scale-125
+    }
+}
