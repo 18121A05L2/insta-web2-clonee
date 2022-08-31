@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Stories from "./Stories";
 import Posts from "./Posts";
 import Suggestions from "./Suggestions";
 import { faker } from "@faker-js/faker";
-import MiniProfile from "./MiniProfile"
+import MiniProfile from "./MiniProfile";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export const USERS = [];
 
@@ -25,16 +27,25 @@ Array.from({ length: 10 }).forEach(() => {
 });
 
 export default function Feed() {
+  const { data: session } = useSession();
+  const router = useRouter();
+  // useEffect(() => {
+  //   if (!session) return router.push("/auth/signin");
+  //   console.log("signed in ")
+  // },[session,router]);
+
   return (
-    <div className="flex justify-center  mx-auto mt-4">
+    <div className="flex xl:ml-[24rem] mt-4">
       <section className="flex flex-col w-screen xl:max-w-[50rem] ">
         <Stories USERS={USERS} />
         <Posts USERS={USERS} />
       </section>
-      <section className="hidden xl:inline-flex mx-4">
-        <MiniProfile />
-        <Suggestions USERS={USERS} />
-      </section>
+      {session && (
+        <section className="hidden xl:inline-flex mx-4">
+          <MiniProfile />
+          <Suggestions USERS={USERS} />
+        </section>
+      )}
     </div>
   );
 }
