@@ -19,8 +19,8 @@ export default function ModalContent() {
   const [caption, setCaption] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
-    const { data: session } = useSession();
-    const router = useRouter();
+  const { data: session } = useSession();
+  const router = useRouter();
   console.log(
     "loading",
     loading,
@@ -56,7 +56,7 @@ export default function ModalContent() {
     console.log("post added with id " + docRef.id);
     // getting url and updaing the postimage
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
-// uploading file to storage
+    // uploading file to storage
     await uploadString(imageRef, selectedFile, "data_url").then(
       async (snapshot) => {
         const downloadURL = await getDownloadURL(imageRef);
@@ -69,6 +69,7 @@ export default function ModalContent() {
     console.log("post updated with id " + docRef.id);
     setLoading(false);
       setSelectedFile(null);
+      setCaption(null);
     //   router.push("/")    need to add addPost linkage to the plus icon
   }
 

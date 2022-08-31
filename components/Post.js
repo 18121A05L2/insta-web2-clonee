@@ -13,7 +13,7 @@ export default function Post({ user }) {
         <div className="flex items-center gap-4">
           <Image
             className="rounded-full hover:opacity-80   "
-            src={user.avatar}
+            src={user.avatar || user.data().userimage}
             width="50"
             height="50"
             objectFit="contain"
@@ -26,7 +26,7 @@ export default function Post({ user }) {
 
       <Image
         className="object-cover w-full "
-        src={user.avatar}
+        src={user.avatar || user.data().postimage }
         width="800"
         height="500"
         objectFit="contain"
@@ -46,8 +46,8 @@ export default function Post({ user }) {
       </div>
       {/* caption */}
       <div className="flex gap-4 py-4 items-center">
-        <span className="font-bold text-[1.4rem]">{user.username}</span>
-        <p className="truncate">{user.text}</p>
+        <span className="font-bold text-[1.4rem]">{user.username || user.data().username}</span>
+        <p className="truncate">{user.text || user.data().caption}</p>
       </div>
       {/* comments */}
 
