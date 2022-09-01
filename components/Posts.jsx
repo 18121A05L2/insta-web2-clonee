@@ -7,19 +7,17 @@ import { useSession } from "next-auth/react";
 
 export default function Posts({ USERS }) {
   const [userPosts, setUserPosts] = useState();
-  const {data: session } = useSession();
+  const { data: session } = useSession();
   useEffect(() => {
     const unsubscribe = onSnapshot(
       query(collection(db, "posts"), orderBy("timestamp", "desc")),
       (snapshot) => {
         setUserPosts(snapshot.docs);
-        
       }
     );
-
     return unsubscribe;
   }, [db]);
-  console.log(userPosts);
+  // console.log(userPosts);
   return (
     <div className=" ">
       {session && (
@@ -30,11 +28,14 @@ export default function Posts({ USERS }) {
           {userPosts ? (
             <div>
               {userPosts.map((user) => (
-                <Post key={uuidv4()} user={user} />
+                <Post key={uuidv4()} user={user} realPost={true} />
               ))}
             </div>
           ) : (
-            <div className="text-center p-10 bg-red-100 text-[1.5rem] my-4"> Post something dude , why waiting</div>
+            <div className="text-center p-10 bg-red-100 text-[1.5rem] my-4">
+              {" "}
+              Post something dude , why waiting
+            </div>
           )}
         </>
       )}
@@ -44,7 +45,7 @@ export default function Posts({ USERS }) {
           Faker's Data
         </h1>
         {USERS.map((user) => (
-          <Post key={uuidv4()} user={user} />
+          <Post key={uuidv4()} user={user} realPost={false} />
         ))}
       </div>
     </div>
