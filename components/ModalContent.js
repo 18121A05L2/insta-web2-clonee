@@ -35,7 +35,7 @@ export default function ModalContent() {
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = (readerEvent) => {
-        setSelectedFile(readerEvent.target.result);
+        setSelectedFile(readerEvent?.target?.result);
         console.log(selectedFile);
       };
     }
@@ -47,8 +47,8 @@ export default function ModalContent() {
     setLoading(true);
     // adding post to the firestore
     const docRef = await addDoc(collection(db, "posts"), {
-      username: session.user.username,
-      userimage: session.user.image,
+      username: session?.user?.username,
+      userimage: session?.user?.image,
       caption: caption || "No caption",
       timestamp: serverTimestamp(),
     });
@@ -61,12 +61,12 @@ export default function ModalContent() {
       async (snapshot) => {
         const downloadURL = await getDownloadURL(imageRef);
         console.log("post image ur :", downloadURL);
-        updateDoc(doc(db, "posts", docRef.id), {
+        updateDoc(doc(db, "posts", docRef?.id), {
           postimage: downloadURL,
         });
       }
     );
-    console.log("post updated with id " + docRef.id);
+    console.log("post updated with id " + docRef?.id);
     setLoading(false);
       setSelectedFile(null);
       setCaption(null);

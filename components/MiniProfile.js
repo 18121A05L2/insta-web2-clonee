@@ -9,13 +9,13 @@ export default function MiniProfile() {
     <div className="fixed flex gap-6 bg-white p-4">
       <Image
         className="rounded-full hover:opacity-80 flex-shrink-0 "
-        src={session.user.image}
+        src={session?.user?.image}
         width="55"
         height="55"
         objectFit="contain"
       />
       <div>
-        <span className="font-bold text-[1.3rem]">{session.user.username}</span>
+        <span className="font-bold text-[1.3rem]">{session?.user?.username}</span>
         <h1>Welcome to Instagram</h1>
       </div>
       <button

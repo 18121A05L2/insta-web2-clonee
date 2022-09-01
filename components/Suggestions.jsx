@@ -17,14 +17,14 @@ export default function Suggestions({ USERS }) {
             {" "}
             <Image
               className="rounded-full hover:opacity-80 "
-              src={user.avatar}
+              src={user?.avatar}
               width="50"
               height="50"
               objectFit="contain"
             />
             <div>
-              <p>{user.username}</p>
-              <p className="text-gray-500">{user.text.substring(0, 20)}...</p>
+              <p>{user?.username}</p>
+              <p className="text-gray-500">{user?.text?.substring(0, 20)}...</p>
             </div>
             <p className="text-blue-500 font-bold">Follow</p>
           </div>

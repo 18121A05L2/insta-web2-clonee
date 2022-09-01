@@ -29,10 +29,6 @@ Array.from({ length: 10 }).forEach(() => {
 export default function Feed() {
   const { data: session } = useSession();
   const router = useRouter();
-  // useEffect(() => {
-  //   if (!session) return router.push("/auth/signin");
-  //   console.log("signed in ")
-  // },[session,router]);
 
   return (
     <div className="flex xl:ml-[24rem] mt-4">

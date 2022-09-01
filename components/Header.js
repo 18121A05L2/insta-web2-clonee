@@ -83,7 +83,7 @@ export default function Header() {
               <Image
                 
                 className="rounded-full hover:opacity-80 cursor-pointer "
-                src={session.user.image}
+                src={session?.user?.image}
                 width="50"
                 height="50"
                 objectFit="contain"
