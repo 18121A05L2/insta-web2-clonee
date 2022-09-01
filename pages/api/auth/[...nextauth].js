@@ -10,6 +10,7 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
+  secret: process.env.NEXTAUTH_SECRET,
 
   pages: {
     signIn: "/auth/signin",
@@ -21,7 +22,7 @@ export default NextAuth({
         .join("")
         .toLocaleLowerCase();
       session.user.uid = token.sub;
-      session.user.avatar = session.user.image
+      session.user.avatar = session.user.image;
       return session;
     },
   },
