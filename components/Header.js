@@ -26,8 +26,8 @@ export default function Header() {
   // console.log(open,"🚩🚩")
 
   return (
-    <div className="shadow-md sticky top-0 z-50 bg-white">
-      <div className="flex justify-between items-center  px-5 sm:px lg:px-[5rem] xl:w-[83rem] xl:mx-auto  ">
+    <div className="shadow-md sticky top-0 z-50 bg-white w-full max-w-screen">
+      <div className="flex justify-between items-center  px-5  lg:px-[5rem] xl:w-[83rem] xl:mx-auto  ">
         {/*left*/}
         <div
           onClick={() => router.push("/")}
@@ -42,7 +42,7 @@ export default function Header() {
         </div>
         <div
           onClick={() => router.push("/")}
-          className="lg:hidden flex-shrink-0 cursor-pointer"
+          className="lg:hidden flex-shrink-0 cursor-pointer px-2"
         >
           <Image
             src="http://links.papareact.com/jjm"
@@ -81,7 +81,7 @@ export default function Header() {
               <AiOutlineHeart className={styles?.icon} />
               <AiOutlineMenu className="lg:hidden text-[3.4rem] hover:scale-[1.15] p-3 active:text-[#bc2a8d] cursor-pointer transition-all " />
               <Image
-                className="rounded-full hover:opacity-80 cursor-pointer "
+                className="rounded-full hover:opacity-80 cursor-pointer flex-shrink-0 "
                 src={session?.user?.image}
                 width="50"
                 height="50"
@@ -95,7 +95,7 @@ export default function Header() {
               />
             </div>
           ) : (
-            <button onClick={signIn}>Sign In</button>
+            <button className="text-[1.2rem] " onClick={signIn}>Sign In</button>
           )}
         </div>
       </div>

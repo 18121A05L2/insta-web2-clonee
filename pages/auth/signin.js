@@ -6,8 +6,8 @@ export default function SignIn({ providers }) {
   return (
     <>
       <Header />
-      <div className=" flex justify-center items-center mt-[10rem]">
-        <div className="flex flex-col w-[25rem] h-[30rem] border-2 items-center p-5 justify-center gap-7">
+      <div className=" flex justify-center items-center mt-[5rem] xl:mt-[10rem]">
+        <div className="flex flex-col w-[25rem] h-[20rem] xl:h-[30rem] border-2 items-center p-5 justify-center gap-7">
           <Image
             className=""
             src="http://links.papareact.com/ocw"

@@ -100,22 +100,24 @@ export default function Post({ user, realPost }) {
   }
 
   return (
-    <div className="border rounded-sm my-6 p-4 bg-white ">
+    <div className="border rounded-sm my-3 xl:my-6 p-3 xl:p-4 bg-white ">
       {/*top*/}
-      <div className="flex justify-between px-4 items-center py-2 m-1">
+      <div className="flex justify-between xl:px-4 items-center xl:py-2 mb-2 ">
         <div className="flex items-center gap-4">
           <Image
             className="rounded-full hover:opacity-80   "
             src={user?.avatar || user?.data()?.userimage}
-            width="50"
-            height="50"
+            width="40"
+            height="40"
             objectFit="contain"
           />
-          <p className="font-bold text-[1.3rem]">{user?.username}</p>
+          <p className="font-bold text-[1.2rem]">{user?.username || user?.data()?.username}</p>
         </div>
 
         <p className="text-[2rem]">...</p>
       </div>
+
+      {/* Middle section */}
 
       <Image
         className="object-cover w-full "
@@ -141,7 +143,7 @@ export default function Post({ user, realPost }) {
         </div>
 
         <div>
-          <BsBookmark className="posticons" />
+          <BsBookmark className="posticons p-1" />
         </div>
       </div>
       {/* like count */}
@@ -151,8 +153,8 @@ export default function Post({ user, realPost }) {
         </p>
       )}
       {/* caption */}
-      <div className="flex gap-4 py-4 items-center">
-        <span className="font-bold text-[1.4rem]">
+      <div className="flex gap-4 py-2 xl:py-4 items-center">
+        <span className="font-bold xl:text-[1.4rem]">
           {user?.username || user?.data()?.username}
         </span>
         <p className="truncate">{user?.text || user?.data()?.caption}</p>
@@ -160,7 +162,7 @@ export default function Post({ user, realPost }) {
       {/* displaying comments */}
 
       {realPost && fetchedComments && (
-        <div className=" h-20 m-2 p-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-black border">
+        <div className=" h-20 xl:m-2 p-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-black border">
           {fetchedComments?.map((comment) => (
             <div
               key={comment?.id}
@@ -190,7 +192,7 @@ export default function Post({ user, realPost }) {
       {/* writing comments */}
 
       {realPost && (
-        <form className="flex  items-center justify-between">
+        <form className="flex  items-center justify-between m-1">
           <div className="flex gap-4">
             {" "}
             <BsEmojiSmile className="posticons" />

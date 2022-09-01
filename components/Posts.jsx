@@ -22,7 +22,7 @@ export default function Posts({ USERS }) {
     <div className=" ">
       {session && (
         <div>
-          <div className="text-center font-bold text-[2rem] mt-2 py-1 bg-red-300">
+          <div className="text-center font-bold text-[1.3em] xl:text-[2rem] mt-2 py-0.5 xl:py-1 bg-red-300">
             User's data
           </div>
           {userPosts && (
@@ -46,7 +46,7 @@ export default function Posts({ USERS }) {
       )}
 
       <div>
-        <p className="text-center font-bold text-[2rem] mt-2 py-1 bg-red-300">
+        <p className="text-center font-bold text-[1.3rem] xl:text-[2rem] mt-2 py-1 bg-red-300">
           Faker's Data
         </p>
         {USERS?.map((user) => (

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Story({ user }) {
   return (
-    <div className="flex flex-col items-center relative h-[5.5rem] w-[5.5rem] flex-shrink-0  rounded-full border-2 border-white ring ring-red-500 hover:scale-110 transition ease-out  ">
+    <div className="flex flex-col items-center relative h-[4.5rem] w-[4.5rem] xl:h-[5.5rem] xl:w-[5.5rem] flex-shrink-0  rounded-full border-2 border-white ring ring-red-500 hover:scale-110 transition ease-out  ">
       <Image
         className="rounded-full "
         src={user?.avatar}

@@ -31,8 +31,8 @@ export default function Feed() {
   const router = useRouter();
 
   return (
-    <div className="flex xl:ml-[24rem] mt-4">
-      <section className="flex flex-col w-screen xl:max-w-[50rem] ">
+    <div className="flex xl:ml-[24rem] mt-2 mx-auto">
+      <section className="flex flex-col w-screen max-w-[40rem] xl:max-w-[50rem] ">
         <Stories USERS={USERS} />
         <Posts USERS={USERS} />
       </section>
