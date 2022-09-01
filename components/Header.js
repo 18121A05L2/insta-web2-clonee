@@ -67,7 +67,7 @@ export default function Header() {
         <div className="flex items-center gap-4 ">
           <AiOutlineHome
             onClick={() => router.push("/")}
-            className={styles.icon}
+            className={styles?.icon}
           />
 
           {session ? (
@@ -77,11 +77,10 @@ export default function Header() {
                 onClick={() => setOpen(true)}
                 className="lg:inline-flex text-[3.4rem] hover:scale-[1.15] p-3 active:text-[#bc2a8d] cursor-pointer transition-all "
               />
-              <HiOutlineUserGroup className={styles.icon} />
-              <AiOutlineHeart className={styles.icon} />
+              <HiOutlineUserGroup className={styles?.icon} />
+              <AiOutlineHeart className={styles?.icon} />
               <AiOutlineMenu className="lg:hidden text-[3.4rem] hover:scale-[1.15] p-3 active:text-[#bc2a8d] cursor-pointer transition-all " />
               <Image
-                
                 className="rounded-full hover:opacity-80 cursor-pointer "
                 src={session?.user?.image}
                 width="50"

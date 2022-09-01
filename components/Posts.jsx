@@ -21,30 +21,35 @@ export default function Posts({ USERS }) {
   return (
     <div className=" ">
       {session && (
-        <>
-          <h1 className="text-center font-bold text-[2rem] mt-2 py-1 bg-red-300">
+        <div>
+          <div className="text-center font-bold text-[2rem] mt-2 py-1 bg-red-300">
             User's data
-          </h1>
-          {userPosts ? (
+          </div>
+          {userPosts && (
             <div>
-              {userPosts.map((user) => (
+              {userPosts?.map((user) => (
                 <Post key={uuidv4()} user={user} realPost={true} />
               ))}
             </div>
-          ) : (
+            // ) : (
+            //   <div className="text-center p-10 bg-red-100 text-[1.5rem] my-4">
+            //     {" "}
+            //     Post something dude , why waiting
+            //   </div>
+          )}
+          {!userPosts && (
             <div className="text-center p-10 bg-red-100 text-[1.5rem] my-4">
-              {" "}
               Post something dude , why waiting
             </div>
           )}
-        </>
+        </div>
       )}
 
       <div>
-        <h1 className="text-center font-bold text-[2rem] mt-2 py-1 bg-red-300">
+        <p className="text-center font-bold text-[2rem] mt-2 py-1 bg-red-300">
           Faker's Data
-        </h1>
-        {USERS.map((user) => (
+        </p>
+        {USERS?.map((user) => (
           <Post key={uuidv4()} user={user} realPost={false} />
         ))}
       </div>

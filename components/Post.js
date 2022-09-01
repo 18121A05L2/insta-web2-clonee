@@ -27,7 +27,7 @@ export default function Post({ user, realPost }) {
   // console.log(fetchedComments);
   const [likes, setLikes] = useState();
   const [hasLiked, setHasLiked] = useState(false);
-  realPost && console.log("hasliked : ", hasLiked, "user id :", user.id);
+  // realPost && console.log("hasliked : ", hasLiked, "user id :", user.id);
   async function handleComment(e) {
     setCommentStoring(true);
     e.preventDefault();
@@ -43,7 +43,7 @@ export default function Post({ user, realPost }) {
 
   useEffect(() => {
     setHasLiked(
-      likes?.findIndex((like) => like.id === session?.user?.uid) !== -1
+      likes?.findIndex((like) => like?.id === session?.user?.uid) !== -1
     );
   }, [likes]);
 
@@ -52,7 +52,7 @@ export default function Post({ user, realPost }) {
       useEffect(() => {
         const unsubscribe = onSnapshot(
           query(
-            collection(db, "posts", user.id, "comments"),
+            collection(db, "posts", user?.id, "comments"),
             orderBy("timestamp", "desc")
           ),
           (snapshot) => {
@@ -61,21 +61,21 @@ export default function Post({ user, realPost }) {
           }
         );
         return unsubscribe;
-      }, [db, user.id]);
+      }, [db, user?.id]);
   }
 
   {
     realPost &&
       useEffect(() => {
         const unsubscribe = onSnapshot(
-          collection(db, "posts", user.id, "likes"),
+          collection(db, "posts", user?.id, "likes"),
           (snapshot) => {
             setLikes(snapshot?.docs);
             // console.log(snapshot.docs, "❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥");
           }
         );
         return unsubscribe;
-      }, [db, user.id]);
+      }, [db, user?.id]);
   }
 
   async function handleLikes() {
@@ -86,12 +86,12 @@ export default function Post({ user, realPost }) {
       likes && console.log("deleting likes");
       likes &&
         (await deleteDoc(
-          doc(db, "posts", user.id, "likes", session?.user?.uid)
+          doc(db, "posts", user?.id, "likes", session?.user?.uid)
         ));
       console.log("likes deleted");
       console.log("total like ", likes);
     } else {
-      await setDoc(doc(db, "posts", user.id, "likes", session?.user?.uid), {
+      await setDoc(doc(db, "posts", user?.id, "likes", session?.user?.uid), {
         username: session?.user?.username,
       });
       console.log("likes added");
@@ -161,7 +161,7 @@ export default function Post({ user, realPost }) {
 
       {realPost && fetchedComments && (
         <div className=" h-20 m-2 p-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-black border">
-          {fetchedComments.map((comment) => (
+          {fetchedComments?.map((comment) => (
             <div
               key={comment?.id}
               className="flex justify-between items-center "
@@ -175,12 +175,12 @@ export default function Post({ user, realPost }) {
                   objectFit="contain"
                 />
                 <p className="font-bold text-[1.3rem]">
-                  {comment.data()?.username}
+                  {comment?.data()?.username}
                 </p>
-                <p>{comment.data()?.comment}</p>
+                <p>{comment?.data()?.comment}</p>
               </div>
               <Moment fromNow className="mr-5">
-                {comment.data().timestamp?.toDate()}
+                {comment?.data()?.timestamp?.toDate()}
               </Moment>
             </div>
           ))}
@@ -198,7 +198,7 @@ export default function Post({ user, realPost }) {
               className="text-[1.4rem] outline-none"
               type="text"
               value={comment}
-              onChange={(e) => setComment(e.target.value)}
+              onChange={(e) => setComment(e.target?.value)}
               placeholder="..comment"
             />
           </div>

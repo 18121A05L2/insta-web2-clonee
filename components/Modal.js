@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalState";
 import { Dialog, Transition } from "@headlessui/react";
-import ModalContent from "../components/ModalContent"
+import ModalContent from "../components/ModalContent";
 
 export default function Modal() {
   const [isOpen, setIsOpen] = useRecoilState(modalState);
@@ -39,7 +39,11 @@ export default function Modal() {
         >
           <div className="fixed inset-0 flex items-center justify-center p-4">
             <Dialog.Panel className="w-full max-w-lg p-4 rounded bg-white ">
-              <Dialog.Title className={"border-b-2 text-center text-[1.6rem] font-bold mb-8 pb-3"}>
+              <Dialog.Title
+                className={
+                  "border-b-2 text-center text-[1.6rem] font-bold mb-8 pb-3"
+                }
+              >
                 Create new post
               </Dialog.Title>
               <ModalContent />

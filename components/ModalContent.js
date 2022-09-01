@@ -21,22 +21,22 @@ export default function ModalContent() {
   const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
   const router = useRouter();
-  console.log(
-    "loading",
-    loading,
-    "selectedfile",
-    Boolean(selectedFile),
-    "caption",
-    caption
-  );
+  // console.log(
+  //   "loading",
+  //   loading,
+  //   "selectedfile",
+  //   Boolean(selectedFile),
+  //   "caption",
+  //   caption
+  // );
 
   function addImageToPost(e) {
     const reader = new FileReader();
     if (e.target.files[0]) {
-      reader.readAsDataURL(e.target.files[0]);
+      reader?.readAsDataURL(e.target.files[0]);
       reader.onload = (readerEvent) => {
         setSelectedFile(readerEvent?.target?.result);
-        console.log(selectedFile);
+        // console.log(selectedFile);
       };
     }
   }
@@ -53,7 +53,7 @@ export default function ModalContent() {
       timestamp: serverTimestamp(),
     });
     // getting post document id
-    console.log("post added with id " + docRef.id);
+    console.log("post added with id " + docRef?.id);
     // getting url and updaing the postimage
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
     // uploading file to storage
@@ -61,7 +61,7 @@ export default function ModalContent() {
       async (snapshot) => {
         const downloadURL = await getDownloadURL(imageRef);
         console.log("post image ur :", downloadURL);
-        updateDoc(doc(db, "posts", docRef?.id), {
+        await updateDoc(doc(db, "posts", docRef?.id), {
           postimage: downloadURL,
         });
       }
@@ -86,7 +86,7 @@ export default function ModalContent() {
       ) : (
         <div className="flex flex-col justify-between items-center ">
           <FiCamera
-            onClick={() => filePickerRef.current.click()}
+            onClick={() => filePickerRef.current?.click()}
             className="text-[5rem] bg-red-200 p-4 rounded-lg cursor-pointer hover:scale-110 transition-all duration-300"
           />
           <input

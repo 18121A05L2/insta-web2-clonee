@@ -16,7 +16,7 @@ export default function MiniProfile() {
       />
       <div>
         <span className="font-bold text-[1.3rem]">{session?.user?.username}</span>
-        <h1>Welcome to Instagram</h1>
+        <p>Welcome to Instagram</p>
       </div>
       <button
         className="font-bold text-blue-500"
