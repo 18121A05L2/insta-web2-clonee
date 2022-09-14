@@ -11,6 +11,9 @@ deployed live website
 Functionalities and features 
 
 --> SingnIn and SignOut with Google Authentication
+
 --> uploading pictures ( use + icon in the header ) , instantly fetch and displays after uploading
+
 --> like , unlike , likes count and posting comments functionality
+
 --> nedd to improve mobile ui , but for pc ui is better
